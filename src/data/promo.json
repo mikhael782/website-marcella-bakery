@@ -1,10 +1,11 @@
 [
     {
         "id": 1,
-        "name": "Birthday Cake",
-        "price": "Rp 350.000",
+        "title": "Diskon 20% Bolu Coklat",
+        "name": "Bolu Cokelat",
+        "price": "Rp 150.000",
+        "description": "Promo spesial hanya minggu ini",
         "image": "/img/menu/birthday_cake.jpg",
-        "description": "Birthday cake yang lembut dan manis dibuat dari bahan-bahan premium pilihan.",
         "previews": [
             "/img/menu/birthday_cake.jpg",
             "/img/menu/birthday_cake.jpg",
@@ -33,16 +34,17 @@
     },
     {
         "id": 2,
-        "name": "Chocolate Cake",
-        "price": "Rp 320.000",
-        "image": "/img/menu/chocolate_cake.jpg",
-        "description": "Chocolate cake yang lembut dan manis dibuat dari bahan-bahan premium pilihan.",
+        "title": "Diskon 20% Bolu Coklat",
+        "name": "Bolu Cokelat",
+        "price": "Rp 150.000",
+        "description": "Promo spesial hanya minggu ini",
+        "image": "/img/menu/birthday_cake.jpg",
         "previews": [
-            "/img/menu/chocolate_cake.jpg",
-            "/img/menu/chocolate_cake.jpg",
-            "/img/menu/chocolate_cake.jpg"
+            "/img/menu/birthday_cake.jpg",
+            "/img/menu/birthday_cake.jpg",
+            "/img/menu/birthday_cake.jpg"
         ],
-        "rating": 5,
+        "rating": 4,
         "sizes": ["Small", "Medium", "Large"],
         "reviews": [
             {
@@ -65,16 +67,17 @@
     },
     {
         "id": 3,
-        "name": "Black Forest",
-        "price": "Rp 380.000",
-        "image": "/img/menu/black_forest.jpg",
-        "description": "Black Forest yang lembut dan manis dibuat dari bahan-bahan premium pilihan.",
+        "title": "Diskon 20% Bolu Coklat",
+        "name": "Bolu Cokelat",
+        "price": "Rp 150.000",
+        "description": "Promo spesial hanya minggu ini",
+        "image": "/img/menu/birthday_cake.jpg",
         "previews": [
-            "/img/menu/black_forest.jpg",
-            "/img/menu/black_forest.jpg",
-            "/img/menu/black_forest.jpg"
+            "/img/menu/birthday_cake.jpg",
+            "/img/menu/birthday_cake.jpg",
+            "/img/menu/birthday_cake.jpg"
         ],
-        "rating": 5,
+        "rating": 4,
         "sizes": ["Small", "Medium", "Large"],
         "reviews": [
             {
@@ -97,14 +100,15 @@
     },
     {
         "id": 4,
-        "name": "Cupcakes",
-        "price": "Rp 25.000",
-        "image": "/img/menu/cupcakes.jpg",
-        "description": "Cupcakes yang lembut dan manis dibuat dari bahan-bahan premium pilihan.",
+        "title": "Diskon 20% Bolu Coklat",
+        "name": "Bolu Cokelat",
+        "price": "Rp 150.000",
+        "description": "Promo spesial hanya minggu ini",
+        "image": "/img/menu/birthday_cake.jpg",
         "previews": [
-            "/img/menu/cupcakes.jpg",
-            "/img/menu/cupcakes.jpg",
-            "/img/menu/cupcakes.jpg"
+            "/img/menu/birthday_cake.jpg",
+            "/img/menu/birthday_cake.jpg",
+            "/img/menu/birthday_cake.jpg"
         ],
         "rating": 4,
         "sizes": ["Small", "Medium", "Large"],
@@ -125,20 +129,22 @@
                 "comment": "Enak banget, lembut sekali, saya happy sekali."
             }
         ],
-        "category": "Bolu"
+        "category": "Cake"
     },
     {
         "id": 5,
-        "name": "Macarons",
-        "price": "Rp 35.000",
-        "image": "/img/menu/macarons.jpg",
-        "description": "Macarons yang lembut dan manis dibuat dari bahan-bahan premium pilihan.",
+        "title": "Diskon 20% Bolu Coklat",
+        "name": "Bolu Cokelat",
+        "price": "Rp 150.000",
+        "description": "Promo spesial hanya minggu ini",
+        "image": "/img/menu/birthday_cake.jpg",
         "previews": [
-            "/img/menu/macarons.jpg",
-            "/img/menu/macarons.jpg",
-            "/img/menu/macarons.jpg"
+            "/img/menu/birthday_cake.jpg",
+            "/img/menu/birthday_cake.jpg",
+            "/img/menu/birthday_cake.jpg"
         ],
-        "rating": 3.5,
+        "rating": 4,
+        "sizes": ["Small", "Medium", "Large"],
         "reviews": [
             {
                 "name": "Hoo Devani Negita P",
@@ -156,37 +162,6 @@
                 "comment": "Enak banget, lembut sekali, saya happy sekali."
             }
         ],
-        "category": "Pastries"
-    },
-    {
-        "id": 6,
-        "name": "Brownies",
-        "price": "Rp 250.000",
-        "image": "/img/menu/brownies.jpg",
-        "description": "Macarons yang lembut dan manis dibuat dari bahan-bahan premium pilihan.",
-        "previews": [
-            "/img/menu/brownies.jpg",
-            "/img/menu/brownies.jpg",
-            "/img/menu/brownies.jpg"
-        ],
-        "rating": 3.5,
-        "reviews": [
-            {
-                "name": "Hoo Devani Negita P",
-                "rating": 5,
-                "comment": "Enak banget, lembut sekali, saya happy sekali."
-            },
-            {
-                "name": "Felicia Angel",
-                "rating": 4.5,
-                "comment": "Enak banget, lembut sekali, saya happy sekali."
-            },
-            {
-                "name": "Johanna Grace",
-                "rating": 4,
-                "comment": "Enak banget, lembut sekali, saya happy sekali."
-            }
-        ],
-        "category": "Brownies"
+        "category": "Cake"
     }
 ]
