@@ -14,7 +14,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-black/50"></div>
 
             {/* Konten */}
-            <div className="relative px-4" style={{ fontFamily: '"Comic Sans MS", sans-serif' }}>
+            <div className="relative px-4" style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}>
                 <motion.h2
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}

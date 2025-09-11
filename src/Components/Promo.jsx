@@ -14,7 +14,7 @@ const Promo = forwardRef((props, ref) => {
     return (
         // className="py-2 bg-pink-200 rounded-b-4xl scroll-mt-10"
         <section ref={ref}>
-            <div className="max-w-7xl mx-auto px-4 py-12" style={{ fontFamily: '"Comic Sans MS", sans-serif' }}>
+            <div className="max-w-7xl mx-auto px-4 py-12" style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}>
                 <h2 className="text-2xl text-pink-500 font-bold text-center mb-6">
                     Promo Spesial 🎉
                 </h2>

@@ -17,7 +17,7 @@ const Menu = forwardRef((props, ref) => {
         >
             <section
                 className="py-16"
-                style={{ fontFamily: '"Comic Sans MS", sans-serif' }}
+                style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}
             >
                 <div className="max-w-7xl mx-auto text-center">
                     <h2 className="text-2xl font-bold text-pink-500 mb-6">Our Menu</h2>

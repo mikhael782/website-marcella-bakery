@@ -33,7 +33,7 @@ const WhyChooseUs = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="py-2 bg-pink-200 rounded-4xl scroll-mt-10"
         >
-            <div className="max-w-7xl mx-auto py-16 text-center px-6" style={{ fontFamily: '"Comic Sans MS", sans-serif' }}>
+            <div className="max-w-7xl mx-auto py-16 text-center px-6" style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}>
                 <h2 className="text-2xl font-bold text-pink-500 mb-6">
                     Why Choose Us
                 </h2>
