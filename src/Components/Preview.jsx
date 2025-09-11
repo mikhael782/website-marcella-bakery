@@ -39,12 +39,12 @@ export default function Preview() {
     return (
         <div className="pt-24">
             <div className="max-w-6xl mb-4 mx-auto flex flex-col md:flex-row gap-8 px-4"
-                style={{ fontFamily: '"Comic Sans MS", cursive, sans-serif' }}>
+                style={{ fontFamily: '"Comic Sans MS", sans-serif' }}>
                     <p className="text-pink-500 font-medium text-left">Preview {'>'} {item.category} {'>'} {item.name}</p>
             </div>
             <div
                 className="max-w-6xl mx-auto p-8 flex flex-col md:flex-row gap-8 bg-pink-100 rounded-2xl"
-                style={{ fontFamily: '"Comic Sans MS", cursive, sans-serif' }}
+                style={{ fontFamily: '"Comic Sans MS", sans-serif' }}
             >
                 {/* Bagian kiri: Image utama + preview */}
                 <div className="flex flex-col items-center md:items-start gap-4">
@@ -175,7 +175,7 @@ export default function Preview() {
             {item.reviews && item.reviews.length > 0 && (
                 <div 
                     className="max-w-6xl mx-auto p-8 flex flex-col gap-4 bg-pink-100 rounded-2xl mt-4" 
-                    style={{ fontFamily: '"Comic Sans MS", cursive, sans-serif' }}
+                    style={{ fontFamily: '"Comic Sans MS", sans-serif' }}
                 >
                     <h3 className="text-2xl text-pink-500 font-medium mb-2">Reviews</h3>
                     <Swiper

@@ -11,7 +11,7 @@ const Categories = forwardRef((props, ref) => {
         <div ref={ref}>
             <section
                 className="max-w-7xl mx-auto py-16 px-4 text-center"
-                style={{ fontFamily: '"Comic Sans MS", cursive, sans-serif' }}
+                style={{ fontFamily: '"Comic Sans MS", sans-serif' }}
             >
                 <h2 className="text-2xl font-bold text-pink-500">Choose Your Categories</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">

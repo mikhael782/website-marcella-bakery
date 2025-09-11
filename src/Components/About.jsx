@@ -12,7 +12,7 @@ const About = forwardRef((props, ref) => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="py-2 scroll-mt-10"
         >
-            <section className="py-16 bg-white" style={{ fontFamily: '"Comic Sans MS", cursive, sans-serif' }}>
+            <section className="py-16 bg-white" style={{ fontFamily: '"Comic Sans MS", sans-serif' }}>
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 px-4">
                     {/* Foto kiri */}
                     <div className="md:w-1/2">

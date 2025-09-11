@@ -53,7 +53,7 @@ export default function Navbar({ setScrollTarget }) {
     }
 
     return (
-        <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50 py-2" style={{ fontFamily: '"Comic Sans MS", cursive, sans-serif' }}>
+        <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50 py-2" style={{ fontFamily: '"Comic Sans MS", sans-serif' }}>
             <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
                 <h2 className="text-2xl font-bold text-pink-500">
                     Marcella Bakery & Cake 🍰

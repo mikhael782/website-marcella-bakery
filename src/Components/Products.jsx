@@ -34,7 +34,7 @@ const Products = () => {
     );
 
     return (
-        <div className="max-w-7xl mx-auto py-16 px-4" style={{ fontFamily: '"Comic Sans MS", cursive, sans-serif' }}>
+        <div className="max-w-7xl mx-auto py-16 px-4" style={{ fontFamily: '"Comic Sans MS", sans-serif' }}>
             <h2 className="text-xl font-bold text-pink-500 mt-7 mb-6 capitalize">
                 {currentCategory ? currentCategory.title : categoryId} Products
             </h2>
