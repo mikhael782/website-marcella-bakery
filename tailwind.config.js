@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+        comic: ['"Comic Sans MS"', '"Comic Neue"', 'sans-serif'],
       },
     },
   },
