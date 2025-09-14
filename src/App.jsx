@@ -20,59 +20,150 @@ function ProductsWrapper() {
 }
 
 function AppContent() {
+  const heroRef = useRef(null);
   const aboutRef = useRef(null);
   const categoriesRef = useRef(null);
   const menuRef = useRef(null);
   const promoRef = useRef(null);
   const [scrollTarget, setScrollTarget] = useState(null);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [isClicking, setIsClicking] = useState(false);
   const location = useLocation();
 
-  // efek untuk scroll setelah page load
+  // ✅ Tangkap scrollTarget yang dikirim via location.state dari Navbar
   useEffect(() => {
-    if (scrollTarget === "about" && aboutRef.current) {
+    if (location.pathname === "/" && location.state?.scrollTarget) {
+      setScrollTarget(location.state.scrollTarget);
+
+      // reset supaya nggak repeat kalau user scroll manual
+      window.history.replaceState({}, document.title, "/");
+    }
+  }, [location]);
+
+  // scroll target kalau dari klik navbar
+  useEffect(() => {
+    const refs = {
+      home: heroRef,
+      about: aboutRef,
+      categories: categoriesRef,
+      menu: menuRef,
+      promo: promoRef,
+    };
+
+    if (scrollTarget && refs[scrollTarget]?.current) {
       const yOffset = -64; // tinggi navbar
-      const y = aboutRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      const y = refs[scrollTarget].current.getBoundingClientRect().top +
+        window.pageYOffset + yOffset;
+
       window.scrollTo({ top: y, behavior: "smooth" });
-      setScrollTarget(null);
+
+      // lock spy supaya gak override
+      setIsClicking(true);
+
+      // setelah animasi scroll, baru reset
+      setTimeout(() => {
+        setIsClicking(false);
+        setScrollTarget(null);
+      }, 800);
+    }
+  }, [scrollTarget]);
+
+  // scroll spy (ubah activeMenu sesuai section yang kelihatan)
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      return;
     }
 
-    if (scrollTarget === "categories" && categoriesRef.current) {
-      const yOffset = -64;
-      const y = categoriesRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-      setScrollTarget(null);
-    }
+    const sections = [
+      { key: "home", ref: heroRef },
+      { key: "about", ref: aboutRef },
+      { key: "categories", ref: categoriesRef },
+      { key: "menu", ref: menuRef },
+      { key: "promo", ref: promoRef },
+    ];
 
-    if (scrollTarget === "menu" && menuRef.current) {
-      const yOffset = -64;
-      const y = menuRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-      setScrollTarget(null);
-    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isClicking) return; // lagi klik, jangan override
 
-    if (scrollTarget === "promo" && promoRef.current) {
-      const yOffset = -64;
-      const y = promoRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-      setScrollTarget(null);
+        // ✅ kalau user di atas banget, paksa Home
+        if (window.scrollY < 100) {
+          setActiveMenu("home");
+          return;
+        }
+
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveMenu(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach(({ key, ref }) => {
+      if (ref.current) {
+        ref.current.id = key; // kasih id = key nav
+        observer.observe(ref.current);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [isClicking, location.pathname]);
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      // kalau bukan di home, jangan highlight apa2
+      setActiveMenu(null);
     }
-  }, [location.pathname, scrollTarget]);
+  }, [location.pathname]);
+
+  // efek untuk scroll setelah page load
+  // useEffect(() => {
+  //   if (scrollTarget === "about" && aboutRef.current) {
+  //     const yOffset = -64; // tinggi navbar
+  //     const y = aboutRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  //     window.scrollTo({ top: y, behavior: "smooth" });
+  //     setScrollTarget(null);
+  //   }
+
+  //   if (scrollTarget === "categories" && categoriesRef.current) {
+  //     const yOffset = -64;
+  //     const y = categoriesRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  //     window.scrollTo({ top: y, behavior: "smooth" });
+  //     setScrollTarget(null);
+  //   }
+
+  //   if (scrollTarget === "menu" && menuRef.current) {
+  //     const yOffset = -64;
+  //     const y = menuRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  //     window.scrollTo({ top: y, behavior: "smooth" });
+  //     setScrollTarget(null);
+  //   }
+
+  //   if (scrollTarget === "promo" && promoRef.current) {
+  //     const yOffset = -64;
+  //     const y = promoRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  //     window.scrollTo({ top: y, behavior: "smooth" });
+  //     setScrollTarget(null);
+  //   }
+  // }, [location.pathname, scrollTarget]);
 
   return (
     <>
-      <Navbar setScrollTarget={setScrollTarget} />
+      <Navbar setScrollTarget={setScrollTarget} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
       <ScrollToTop />
       <Routes>
         <Route
           path="/"
           element={
             <>
-              <Hero />
-              <About ref={aboutRef} />
-              <WhyChooseUs/>
-              <Categories ref={categoriesRef} />
-              <Menu ref={menuRef} />
-              <Promo ref={promoRef}/>
+              <div ref={heroRef}><Hero /></div>
+              <div ref={aboutRef}><About /></div>
+              <WhyChooseUs />
+              <div ref={categoriesRef}><Categories /></div>
+              <div ref={menuRef}><Menu /></div>
+              <div ref={promoRef}><Promo /></div>
             </>
           }
         />
