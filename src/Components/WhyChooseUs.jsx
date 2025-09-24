@@ -26,21 +26,30 @@ const features = [
 
 const WhyChooseUs = () => {
     return (
-        <motion.section
-            initial = {{ opacity: 0, y: 50 }}
-            whileInView = {{ opacity: 1, y: 0 }}
-            viewport = {{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="py-2 bg-pink-200 rounded-4xl scroll-mt-10"
-        >
+        <section className="py-2 bg-pink-100 rounded-3xl scroll-mt-10">
             <div className="max-w-7xl mx-auto py-16 text-center px-6" style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}>
-                <h2 className="text-2xl font-bold text-pink-500 mb-6">
+                <motion.h2 
+                    className="text-2xl font-bold text-pink-500 mb-3 relative inline-block"
+                    initial= {{ opacity: 0, y: -50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    viewport={{ once: true }}
+                >
                     Why Choose Us
-                </h2>
-                <p className="text-gray-600 mb-6">
+                    <span className="block w-35 h-1 bg-pink-500 mt-3 rounded mx-auto"></span>
+                </motion.h2>
+
+                <motion.p 
+                    className="text-gray-600 mb-6"
+                    initial= {{ opacity: 0, y: -50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    viewport={{ once: true }}
+                >
                     Kami selalu berkomitmen menghadirkan produk terbaik untuk Anda.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                </motion.p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {features.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -62,7 +71,7 @@ const WhyChooseUs = () => {
                     ))}
                 </div>
             </div>
-        </motion.section>
+        </section>
     );
 };
 

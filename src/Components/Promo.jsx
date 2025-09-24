@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { forwardRef } from "react";
+import slugify from "../utils/slugify";
 
 const Promo = forwardRef((props, ref) => {
     const navigate = useNavigate();
@@ -14,10 +15,17 @@ const Promo = forwardRef((props, ref) => {
     return (
         // className="py-2 bg-pink-200 rounded-b-4xl scroll-mt-10"
         <section ref={ref}>
-            <div className="max-w-7xl mx-auto px-4 py-12" style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}>
-                <h2 className="text-2xl text-pink-500 font-bold text-center mb-6">
+            <div className="max-w-7xl mx-auto text-center px-4 py-16" style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}>
+                <motion.h2 
+                    className="text-2xl text-pink-500 font-bold mb-6 relative inline-block"
+                    initial={{ opacity: 0, y: -50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    viewport={{ once: true }}
+                >
                     Promo Spesial 🎉
-                </h2>
+                    <span className="block w-35 h-1 bg-pink-500 mt-3 rounded mx-auto"></span>
+                </motion.h2>
 
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
@@ -35,10 +43,12 @@ const Promo = forwardRef((props, ref) => {
                     {promos.map((promo, idx) => (
                         <SwiperSlide key={idx}>
                             <motion.div
+                                initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6 }}
+                                transition={{ duration: 0.5 }}
+                                viewport={{ once: true }}
                                 className="relative h-64 rounded-lg overflow-hidden shadow-lg cursor-pointer"
-                                onClick={() => navigate(`/promo_products/${promo.id}`)}
+                                onClick={() => navigate(`/promo-products/${promo.id}/${slugify(promo.name)}`)}
                             >
                                 <img
                                     src={promo.image}
@@ -47,7 +57,7 @@ const Promo = forwardRef((props, ref) => {
                                 />
 
                                 {/* Overlay transparan */}
-                                <div className="absolute inset-0 bg-black/35 z-10"></div>
+                                <div className="absolute inset-0 bg-black/30 z-10"></div>
 
                                 {/* Text di atas overlay */}
                                 <div className="absolute bottom-4 left-4 z-20">

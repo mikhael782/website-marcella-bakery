@@ -10,10 +10,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import items from "../data/menu.json";
 import Swal from "sweetalert2";
+import slugify from "../utils/slugify";
 
 export default function Preview() {
     const navigate = useNavigate();
-    const { id } = useParams(); 
+    const { id, slug } = useParams(); 
     const item = items.find(i => i.id === parseInt(id));
     const [mainImage, setMainImage]  = useState(item?.image || "");
     const [qty, setQty] = useState(1);
@@ -34,6 +35,16 @@ export default function Preview() {
         }
     }, [item, navigate]);
 
+    // cek kalau slug di URL gak sesuai → redirect
+    useEffect(() => {
+        if (item) {
+            const correctSlug = slugify(item.name);
+            if (slug !== correctSlug) {
+                navigate(`/preview/${item.id}/${correctSlug}`, { replace: true });
+            }
+        }
+    }, [item, slug, navigate]);
+
     if (!item) return null; // jangan render apa-apa, biar SweetAlert yg jalan
 
     return (
@@ -42,6 +53,7 @@ export default function Preview() {
                 style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}>
                     <p className="text-pink-500 font-medium text-left">Preview {'>'} {item.category} {'>'} {item.name}</p>
             </div>
+
             <div
                 className="max-w-6xl mx-auto p-8 flex flex-col md:flex-row gap-8 bg-pink-100 rounded-2xl"
                 style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}
@@ -53,6 +65,7 @@ export default function Preview() {
                         alt={item.name}
                         className="w-100 h-80 object-cover rounded-lg shadow-lg"
                     />
+
                     {/* Preview images */}
                     <div className="flex gap-2 mt-2">
                         {item.previews?.map((img, idx) => (
@@ -69,8 +82,13 @@ export default function Preview() {
 
                 {/* Bagian kanan: Deskripsi */}
                 <div className="flex-1">
-                    <h2 className="text-2xl font-medium text-pink-500 mb-4">{item.name}</h2>
-                    <p className="text-pink-500 font-medium mb-4">{item.price}</p>
+                    <h2 className="text-2xl font-medium text-pink-500 mb-4">
+                        {item.name}
+                    </h2>
+
+                    <p className="text-pink-500 font-medium mb-4">
+                        {item.price}
+                    </p>
                     
                     {/* Rating */}
                     <div className="flex items-center gap-1 mb-4">
@@ -142,7 +160,9 @@ export default function Preview() {
                             >
                                 -
                             </button>
+
                             <span className="px-4">{qty}</span>
+                            
                             <button
                                 className="px-3 py-1 text-pink-500 font-medium cursor-pointer"
                                 onClick={() => setQty(qty + 1)}
@@ -177,7 +197,10 @@ export default function Preview() {
                     className="max-w-6xl mx-auto p-8 flex flex-col gap-4 bg-pink-100 rounded-2xl mt-4" 
                     style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}
                 >
-                    <h3 className="text-2xl text-pink-500 font-medium mb-2">Reviews</h3>
+                    <h3 className="text-2xl text-pink-500 font-medium mb-2">
+                        Reviews
+                    </h3>
+
                     <Swiper
                         modules={[Pagination, Autoplay]}
                         spaceBetween={20}
@@ -218,8 +241,14 @@ export default function Preview() {
                                             }
                                         })}
                                     </div>
-                                    <p className="font-medium">{review.name}</p>
-                                    <p className="text-pink-500 font-medium">{review.comment}</p>
+
+                                    <p className="font-medium">
+                                        {review.name}
+                                    </p>
+
+                                    <p className="text-pink-500 font-medium">
+                                        {review.comment}
+                                    </p>
                                 </div>
                             </SwiperSlide>
                         )}

@@ -49,6 +49,7 @@ export default function Footer() {
                         <li className="hover:text-gray-200 cursor-pointer">Contact</li>
                     </ul>
                 </div>
+                
                 <div>
                     <h3 className="text-lg font-semibold mb-3">Categories</h3>
                     <ul className="space-y-2 text-sm font-medium">

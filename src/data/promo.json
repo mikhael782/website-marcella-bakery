@@ -5,11 +5,11 @@
         "name": "Bolu Cokelat",
         "price": "Rp 150.000",
         "description": "Promo spesial hanya minggu ini",
-        "image": "/img/menu/birthday_cake.jpg",
+        "image": "/img/menu/chocolate_cake.jpg",
         "previews": [
-            "/img/menu/birthday_cake.jpg",
-            "/img/menu/birthday_cake.jpg",
-            "/img/menu/birthday_cake.jpg"
+            "/img/menu/chocolate_cake.jpg",
+            "/img/menu/chocolate_cake.jpg",
+            "/img/menu/chocolate_cake.jpg"
         ],
         "rating": 4,
         "sizes": ["Small", "Medium", "Large"],
@@ -34,8 +34,8 @@
     },
     {
         "id": 2,
-        "title": "Diskon 20% Bolu Coklat",
-        "name": "Bolu Cokelat",
+        "title": "Diskon 20% Birthday Cake",
+        "name": "Birthday Cake",
         "price": "Rp 150.000",
         "description": "Promo spesial hanya minggu ini",
         "image": "/img/menu/birthday_cake.jpg",

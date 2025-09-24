@@ -10,10 +10,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import promos from "../data/promo.json";
 import Swal from "sweetalert2";
+import slugify from "../utils/slugify";
 
 export default function PromoProducts () {
     const navigate = useNavigate();
-    const { id } = useParams();
+    const { id, slug } = useParams();
     const promo = promos.find(i => i.id === parseInt(id));
     const [mainImage, setMainImage] = useState(promo?.image || "");
     const [qty, setQty] = useState(1);
@@ -33,6 +34,16 @@ export default function PromoProducts () {
         }
     }, [promo, navigate]);
 
+    // cek kalau slug di URL gak sesuai → redirect
+    useEffect(() => {
+        if (promo) {
+            const correctSlug = slugify(promo.name);
+            if (slug !== correctSlug) {
+                navigate(`/preview/${promo.id}/${correctSlug}`, { replace: true });
+            }
+        }
+    }, [promo, slug, navigate]);
+
     if (!promo) return null;
 
     return (
@@ -41,6 +52,7 @@ export default function PromoProducts () {
                 style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}>
                     <p className="text-pink-500 font-medium text-left">Promo Product {'>'} {promo.category} {'>'} {promo.name}</p>
             </div>
+
             <div 
                 className="max-w-6xl mx-auto p-8 flex flex-col md:flex-row gap-8 bg-pink-100 rounded-2xl"
                 style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}
@@ -52,6 +64,7 @@ export default function PromoProducts () {
                         alt= {promo.name}
                         className="w-100 h-80 object-cover rounded-lg shadow-lg"
                     />
+
                     {/* Preview images */}
                     <div className="flex gap-2 mt-2">
                         {promo.previews?.map((img, idx) => (
@@ -68,8 +81,13 @@ export default function PromoProducts () {
 
                 {/* Bagian kanan: deskripsi */}
                 <div className="flex-1">
-                    <h2 className="text-2xl font-medium text-pink-500 mb-4">{promo.name}</h2>
-                    <p className="text-pink-500 font-medium mb-4">{promo.price}</p>
+                    <h2 className="text-2xl font-medium text-pink-500 mb-4">
+                        {promo.name}
+                    </h2>
+
+                    <p className="text-pink-500 font-medium mb-4">
+                        {promo.price}
+                    </p>
 
                     {/* Rating */}
                     <div className="flex items-center gap-1 mb-4">
@@ -140,7 +158,9 @@ export default function PromoProducts () {
                             >
                                 -
                             </button>
+
                             <span className="px-4">{qty}</span>
+
                             <button
                                 className="px-3 py-1 text-pink-500 font-medium cursor-pointer"
                                 onClick={() => setQty(qty + 1)}
@@ -176,6 +196,7 @@ export default function PromoProducts () {
                     style={{ fontFamily: '"Comic Sans MS", "Comic Neue", sans-serif' }}
                 >
                     <h3 className="text-2xl text-pink-500 font-medium mb-2">Reviews</h3>
+
                     <Swiper
                         modules={[Pagination, Autoplay]}
                         spaceBetween={20}
@@ -216,8 +237,14 @@ export default function PromoProducts () {
                                             }
                                         })}
                                     </div>
-                                    <p className="font-medium">{review.name}</p>
-                                    <p className="text-pink-500 font-medium">{review.comment}</p>
+
+                                    <p className="font-medium">
+                                        {review.name}
+                                    </p>
+
+                                    <p className="text-pink-500 font-medium">
+                                        {review.comment}
+                                    </p>
                                 </div>
                             </SwiperSlide>
                         )}

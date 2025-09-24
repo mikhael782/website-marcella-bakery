@@ -39,8 +39,8 @@ export default function Navbar({ setScrollTarget, activeMenu, setActiveMenu }) {
         { label: "Categories", key: "categories", target: "categories" },
         { label: "Menu", key: "menu", target: "menu" },
         { label: "Promo", key: "promo", target: "promo" },
-        { label: "Gallery", key: "gallery" },
-        { label: "Testimoni", key: "testimoni" },
+        { label: "Gallery", key: "gallery", target: "gallery" },
+        { label: "Testimoni", key: "testimoni", target: "testimoni" },
         { label: "Contact", key: "contact" },
     ];
 

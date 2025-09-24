@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useReducer } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation, useParams } from "react-router-dom";
 import ScrollToTop from "./Components/ScrollToTop";
 import Navbar from "./Components/Navbar";
@@ -11,6 +11,10 @@ import Menu from "./Components/Menu";
 import Preview from "./Components/Preview";
 import Promo from "./Components/Promo";
 import PromoProducts from "./Components/PromoProducts";
+import GalleryTeaser from "./Components/GalleryTeaser";
+import GalleryPage from "./Components/GalleryPage";
+import Testimoni from "./Components/Testimoni";
+import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 
 // Wrapper biar Products remount tiap ganti categoryId
@@ -25,6 +29,8 @@ function AppContent() {
   const categoriesRef = useRef(null);
   const menuRef = useRef(null);
   const promoRef = useRef(null);
+  const galleryRef = useRef(null);
+  const testimoniRef = useRef(null);
   const [scrollTarget, setScrollTarget] = useState(null);
   const [activeMenu, setActiveMenu] = useState(null);
   const [isClicking, setIsClicking] = useState(false);
@@ -48,6 +54,8 @@ function AppContent() {
       categories: categoriesRef,
       menu: menuRef,
       promo: promoRef,
+      gallery: galleryRef,
+      testimoni: testimoniRef,
     };
 
     if (scrollTarget && refs[scrollTarget]?.current) {
@@ -80,6 +88,8 @@ function AppContent() {
       { key: "categories", ref: categoriesRef },
       { key: "menu", ref: menuRef },
       { key: "promo", ref: promoRef },
+      { key: "gallery", ref: galleryRef },
+      { key: "testimoni", ref: testimoniRef },
     ];
 
     const observer = new IntersectionObserver(
@@ -164,13 +174,19 @@ function AppContent() {
               <div ref={categoriesRef}><Categories /></div>
               <div ref={menuRef}><Menu /></div>
               <div ref={promoRef}><Promo /></div>
+              <div ref={galleryRef}><GalleryTeaser /></div>
+              <div ref={testimoniRef}><Testimoni /></div>
+              <Contact/>
             </>
           }
         />
         {/* ✅ Pakai wrapper biar Products remount tiap ganti kategori */}
-        <Route path="/products/:categoryId" element={<ProductsWrapper />} />
-        <Route path="/preview/:id" element={<Preview />} />
-         <Route path="/promo_products/:id" element={<PromoProducts />} />
+        <Route path="/product-category" element={<ProductsWrapper />} />
+        <Route path="/product-category/:categoryId" element={<ProductsWrapper />} />
+        <Route path="/preview/:id/:slug" element={<Preview />} />
+        <Route path="/promo-products/:id/:slug" element={<PromoProducts />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/gallery/:categoryId" element={<GalleryPage />} />
       </Routes>
       <Footer />
     </>
